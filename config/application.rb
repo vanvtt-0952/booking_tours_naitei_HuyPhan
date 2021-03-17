@@ -12,5 +12,6 @@ module BookTours
     config.i18n.default_locale = :vi
     I18n.available_locales = [:en, :vi]
 
+    config.serve_static_assets = false
   end
 end

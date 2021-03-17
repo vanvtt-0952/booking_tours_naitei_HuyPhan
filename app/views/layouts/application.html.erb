@@ -12,45 +12,10 @@
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
-
-    <!--font-awesome.min.css-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-
-    <!--animate.css-->
-    <link rel="stylesheet" href="assets/css/animate.css" />
-
-    <!--hover.css-->
-    <link rel="stylesheet" href="assets/css/hover-min.css">
-
-    <!--datepicker.css-->
-    <link rel="stylesheet"  href="assets/css/datepicker.css" >
-
-    <!--owl.carousel.css-->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css"/>
-
-    <!-- range css-->
-        <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
-
-    <!--bootstrap.min.css-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-
-    <!-- bootsnav -->
-    <link rel="stylesheet" href="assets/css/bootsnav.css"/>
-
-    <!--style.css-->
-    <link rel="stylesheet" href="assets/css/style.css" />
-
-    <!--responsive.css-->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <%= render "shares/link_stylesheet" %>
   </head>
 
   <body>
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-      your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-
     <!-- main-menu Start -->
     <header class="top-area">
       <div class="header-area">
@@ -77,13 +42,30 @@
                     <li class="smooth-menu"><a href="#home">home</a></li>
                     <li class="smooth-menu"><a href="#gallery">Destination</a></li>
                     <li class="smooth-menu"><a href="#pack">Packages </a></li>
-                    <li class="smooth-menu"><a href="#spo">Special Offers</a></li>
                     <li class="smooth-menu"><a href="#blog">blog</a></li>
                     <li class="smooth-menu"><a href="#subs">subscription</a></li>
                     <li>
-                      <button class="book-btn">book now
-                      </button>
-                    </li><!--/.project-btn-->
+                      <a href="#">
+                        <i class="font-size-30 color-ff8f00d9 fa fa-lock"></i>
+                        Account
+                      </a>
+                    </li>
+                    <li>
+                      <%= link_to "#", class: "btn btn-secondary btn_add", data: {toggle: "modal", target: "#exampleModal"} do %>
+                        <i class="font-size-30 color-266f26 fa fa-user"></i>
+                        Login
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to t("header.logout"), destroy_user_session_path, method: :delete do %>
+                        <i class="font-size-30 red-color fa fa-sign-out" aria-hidden="true"></i>
+                        Logout
+                      <% end %>
+                    </li>
+                    <li>
+                      <button class="book-btn">Book now </button>
+                    </li>
+                    <!--/.project-btn-->
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.main-menu-->
@@ -99,122 +81,10 @@
     <%= yield %>
 
     <!-- footer-copyright start -->
-    <footer  class="footer-copyright">
-      <div class="container">
-        <div class="footer-content">
-          <div class="row">
-
-            <div class="col-sm-3">
-              <div class="single-footer-item">
-                <div class="footer-logo">
-                  <a href="index.html">
-                    tour<span>Nest</span>
-                  </a>
-                  <p>
-                    best travel agency
-                  </p>
-                </div>
-              </div><!--/.single-footer-item-->
-            </div><!--/.col-->
-
-            <div class="col-sm-3">
-              <div class="single-footer-item">
-                <h2>link</h2>
-                <div class="single-footer-txt">
-                  <p><a href="#">home</a></p>
-                  <p><a href="#">destination</a></p>
-                  <p><a href="#">spacial packages</a></p>
-                  <p><a href="#">special offers</a></p>
-                  <p><a href="#">blog</a></p>
-                  <p><a href="#">contacts</a></p>
-                </div><!--/.single-footer-txt-->
-              </div><!--/.single-footer-item-->
-
-            </div><!--/.col-->
-
-            <div class="col-sm-3">
-              <div class="single-footer-item">
-                <h2>popular destination</h2>
-                <div class="single-footer-txt">
-                  <p><a href="#">china</a></p>
-                  <p><a href="#">venezuela</a></p>
-                  <p><a href="#">brazil</a></p>
-                  <p><a href="#">australia</a></p>
-                  <p><a href="#">london</a></p>
-                </div><!--/.single-footer-txt-->
-              </div><!--/.single-footer-item-->
-            </div><!--/.col-->
-
-            <div class="col-sm-3">
-              <div class="single-footer-item text-center">
-                <h2 class="text-left">contacts</h2>
-                <div class="single-footer-txt text-left">
-                  <p>+1 (300) 1234 6543</p>
-                  <p class="foot-email"><a href="#">info@tnest.com</a></p>
-                  <p>North Warnner Park 336/A</p>
-                  <p>Newyork, USA</p>
-                </div><!--/.single-footer-txt-->
-              </div><!--/.single-footer-item-->
-            </div><!--/.col-->
-
-          </div><!--/.row-->
-
-        </div><!--/.footer-content-->
-        <hr>
-        <div class="foot-icons ">
-          <ul class="footer-social-links list-inline list-unstyled">
-                    <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
-              </ul>
-              <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
-
-            </div><!--/.foot-icons-->
-        <div id="scroll-Top">
-          <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-        </div><!--/.scroll-Top-->
-      </div><!-- /.container-->
-
-    </footer><!-- /.footer-copyright-->
+    <%= render "shares/footer" %>
     <!-- footer-copyright end -->
 
-
-    <script src="assets/js/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-    <!--modernizr.min.js-->
-    <script  src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
-
-    <!--bootstrap.min.js-->
-    <script  src="assets/js/bootstrap.min.js"></script>
-
-    <!-- bootsnav js -->
-    <script src="assets/js/bootsnav.js"></script>
-
-    <!-- jquery.filterizr.min.js -->
-    <script src="assets/js/jquery.filterizr.min.js"></script>
-
-    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-    <!--jquery-ui.min.js-->
-        <script src="assets/js/jquery-ui.min.js"></script>
-
-        <!-- counter js -->
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-
-    <!--owl.carousel.js-->
-        <script  src="assets/js/owl.carousel.min.js"></script>
-
-        <!-- jquery.sticky.js -->
-    <script src="assets/js/jquery.sticky.js"></script>
-
-        <!--datepicker.js-->
-        <script  src="assets/js/datepicker.js"></script>
-
-    <!--Custom JS-->
-    <script src="assets/js/custom.js"></script>
+    <%= render "shares/modal_login" %>
+    <%= render "shares/link_js" %>
   </body>
-
 </html>

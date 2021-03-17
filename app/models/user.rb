@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :rememberable, :validatable
   has_one :payment
 
   has_many :booking_tours, dependent: :destroy
@@ -8,5 +12,5 @@ class User < ApplicationRecord
 
   enum role: {customer: 0, admin: 1}
 
-  has_secure_password
+  # has_secure_password
 end

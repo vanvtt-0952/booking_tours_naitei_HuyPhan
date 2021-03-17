@@ -1,8 +1,7 @@
-User.create!(
-  name: "Admin",
-  email: "admin@gmail.com",
+User.create(
+  name: "Admin1",
+  email: "admin1@gmail.com",
   password: "123456",
-  password_confirmation: "123456",
   role: User.roles[:admin],
   address: Faker::Address.full_address,
   phone: Faker::PhoneNumber.cell_phone
@@ -16,7 +15,6 @@ User.create!(
     name: name,
     email: email,
     password: "123456",
-    password_confirmation: "123456",
     role: User.roles[:customer],
     address: Faker::Address.full_address,
     phone: Faker::PhoneNumber.cell_phone
