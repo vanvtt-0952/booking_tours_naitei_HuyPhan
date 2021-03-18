@@ -9,6 +9,7 @@ environment.plugins.prepend(
     jQuery: 'jquery',
     'window.jQuery': 'jquery',
     Popper: ['popper.js', 'default'],
+    toastr: 'toastr'
   })
 )
 
