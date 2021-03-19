@@ -3,3 +3,14 @@ user:
     max_length: 255
   name:
     max_length: 50
+tour:
+  image:
+    formats:
+      - image/jpg
+      - image/gif
+      - image/png
+paginate:
+  page_6: 6
+
+image_default: "https://tourdanangcity.vn/wp-content/uploads/2018/04/lang_co-tour-tour-hue-1-ngay.jpg?v=1615422534"
+

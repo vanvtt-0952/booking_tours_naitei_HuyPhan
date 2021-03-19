@@ -16,4 +16,9 @@ module ApplicationHelper
     end
     flash_messages.join("\n")
   end
+
+  def check_image image
+    image ||= Settings.image_default
+    image_tag(image, class: "profile_image")
+  end
 end
