@@ -33,15 +33,21 @@ end
 Category.all.each do |category|
   10.times do |n|
     place = Faker::Address.city
-    description = "This is the tour to go to #{place}.
-                   Hope you enjoy it"
-    Tour.create(
-                 name: "Travel to " + place,
-                 description: description,
-                 category_id: category.id,
-                 duaration: rand(2..5),
-                 price: Faker::Number.decimal(l_digits: 3, r_digits: 2)
-                 )
+    description = "This is the tour to go to #{place}. Hope you enjoy it"
+    t = Tour.new(
+      name: "Travel to " + place,
+      description: description,
+      duaration: rand(2..5),
+      category_id: category.id,
+      price: Faker::Number.decimal(l_digits: 3, r_digits: 2)
+    )
+
+    t.image.attach(
+      io: File.open('/home/vu.thi.tran.van/Training/ruby/tutorial/rails/huy_phan/booking_tours_naitei_HuyPhan/app/assets/images/tour.jpg'),
+      filename: 'tour.jpg',
+      content_type: 'image/jpg'
+    )
+    t.save!
   end
 end
 

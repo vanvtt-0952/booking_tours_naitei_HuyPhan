@@ -1,0 +1,41 @@
+<div class="col-md-4 col-sm-6">
+  <div class="single-package-item">
+    <%= check_image(tour.image) %>
+    <div class="single-package-item-txt">
+      <h3>
+        <span><%= tour.name %></span></br>
+        <span class="pull-right"><%= number_to_currency tour.price %></span>
+      </h3>
+      <div class="packages-para">
+        <p>
+          <span>
+            <i class="fa fa-angle-right"></i>
+            <%= t "count", count: tour.duaration %>
+          </span>
+          <i class="fa fa-angle-right"></i>
+          <%= tour.category.name %>
+        </p>
+        <p>
+          <i class="fa fa-angle-right"></i> Description</br>
+          <%= tour.description[0..50] %>
+         </p>
+      </div><!--/.packages-para-->
+      <div class="packages-review">
+        <p>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <span><%= t "review", count: tour.reviews.size %></span>
+        </p>
+      </div><!--/.packages-review-->
+      <div class="about-btn">
+        <button  class="about-view packages-btn">
+          book now
+        </button>
+      </div><!--/.about-btn-->
+    </div><!--/.single-package-item-txt-->
+  </div><!--/.single-package-item-->
+
+</div>

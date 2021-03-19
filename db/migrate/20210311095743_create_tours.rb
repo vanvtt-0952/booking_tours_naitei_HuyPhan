@@ -6,6 +6,7 @@ class CreateTours < ActiveRecord::Migration[6.0]
       t.integer :duaration
       t.float :price
       t.references :category
+      t.string :image
 
       t.timestamps
     end
