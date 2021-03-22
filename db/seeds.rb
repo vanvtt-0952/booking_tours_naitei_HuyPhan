@@ -1,4 +1,4 @@
-User.create!(
+admin = User.new(
   name: "Admin",
   email: "admin@gmail.com",
   password: "123456",
@@ -7,12 +7,16 @@ User.create!(
   address: Faker::Address.full_address,
   phone: Faker::PhoneNumber.cell_phone
 )
+admin.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'home', 'admin.jpg')),
+      filename: 'admin.jpg',
+      content_type: 'image/jpg')
+admin.save
 
 # Create list customer
 4.times do |n|
   name = Faker::Name.name
   email = "user-#{n}@gmail.com"
-  User.create(
+  u = User.new(
     name: name,
     email: email,
     password: "123456",
@@ -21,6 +25,10 @@ User.create!(
     address: Faker::Address.full_address,
     phone: Faker::PhoneNumber.cell_phone
   )
+  u.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'home', 'user.jpeg')),
+      filename: 'user.jpeg',
+      content_type: 'image/jpeg')
+  u.save
 end
 
 3.times do |n|
@@ -43,11 +51,17 @@ Category.all.each do |category|
     )
 
     t.image.attach(
-      io: File.open('/home/vu.thi.tran.van/Training/ruby/tutorial/rails/huy_phan/booking_tours_naitei_HuyPhan/app/assets/images/tour.jpg'),
+      io: File.open(Rails.root.join('app', 'assets', 'images', 'tour.jpg')),
       filename: 'tour.jpg',
       content_type: 'image/jpg'
     )
-    t.save!
+    t.save
   end
 end
 
+# reviews
+Tour.all.each do |tour|
+  (0..5).each do
+    tour.reviews.create! content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4), user_id: User.all.pluck(:id).sample
+  end
+end

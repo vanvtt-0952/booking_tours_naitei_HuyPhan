@@ -9,4 +9,5 @@ class Tour < ApplicationRecord
   has_one_attached :image
 
   scope :sort_by_name, -> {order name: :desc}
+  scope :hot_tour, -> {join(:book_tours ).group(tour_id).last(6)}
 end

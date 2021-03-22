@@ -1,0 +1,22 @@
+<!--about-us start -->
+<section id="home" class="about-us">
+  <div class="container">
+    <div class="about-us-content">
+      <div class="row header-image">
+      </div><!--/.row-->
+    </div><!--/.about-us-content-->
+  </div><!--/.container-->
+
+</section><!--/.about-us-->
+<!--about-us end -->
+<%= render "static_pages/travel_box" %>
+<!--travel-box end-->
+
+<!--packages start-->
+<section id="pack" class="packages">
+  <div class="container">
+    <%= render "static_pages/package_tours" %>
+    <!--packages end-->
+    <%= will_paginate @tours %>
+  </div>
+</section>
