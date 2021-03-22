@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_073512) do
+ActiveRecord::Schema.define(version: 2021_03_22_141642) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_073512) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "duaration"
+    t.integer "quantity_persion"
     t.index ["tour_id"], name: "index_booking_tours_on_tour_id"
     t.index ["user_id"], name: "index_booking_tours_on_user_id"
   end
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_073512) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_digest"
+    t.string "avatar"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
