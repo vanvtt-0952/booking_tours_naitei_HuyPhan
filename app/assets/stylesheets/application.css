@@ -34,3 +34,10 @@
 .color-266f26 {
   color: #266f26
 }
+.pagination>li>a {
+  border-radius: 50% !important;
+}
+.pagination {
+  margin: 0px !important;
+  float: right;
+}
