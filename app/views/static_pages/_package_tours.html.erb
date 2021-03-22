@@ -1,18 +1,13 @@
-<section id="pack" class="packages">
-  <div class="container">
-    <div class="gallary-header text-center">
-      <h2>
-        special packages
-      </h2>
 
-    </div><!--/.gallery-header-->
-    <div class="packages-content">
-      <div class="row">
-        <%= render @tours %>
-      </div><!--/.row-->
-    </div><!--/.packages-content-->
-    <%= will_paginate @tours,
-      params: { controller: :static_pages, action: :home } %>
-  </div><!--/.container-->
+<div class="gallary-header text-center">
+  <h2>
+    special packages
+  </h2>
 
-</section><!--/.packages-->
+</div><!--/.gallery-header-->
+<div class="packages-content">
+  <div class="row">
+    <%= render @tours %>
+  </div><!--/.row-->
+</div><!--/.packages-content-->
+<!--/.packages-->
