@@ -1,0 +1,56 @@
+<!--about-us start -->
+<section id="home" class="about-us">
+  <div class="container">
+    <div class="about-us-content">
+      <div class="row header-image">
+      </div><!--/.row-->
+    </div><!--/.about-us-content-->
+  </div><!--/.container-->
+
+</section><!--/.about-us-->
+<!--about-us end -->
+<!--travel-box end-->
+
+<!--packages start-->
+<section id="pack" class="packages">
+  <div class="container">
+    <div class="gallary-header text-center">
+      <h2>
+        My Booking
+      </h2>
+
+    </div><!--/.gallery-header-->
+    <div class="packages-content">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <table class="table table-striped table-hover" id="tbl_booking_tours">
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Tour name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Duaration</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Quantity persons</th>
+                <th scope="col">Contact name</th>
+                <th scope="col">Contact email</th>
+                <th scope="col">Contact phone</th>
+                <th scope="col">Status</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody id="booking_tours">
+              <%= render(@booking_tours) || "Ban chua thuc hien Book tour" %>
+            </tbody>
+          </table>
+        </div>
+      </div><!--/.row-->
+    </div><!--/.packages-content-->
+    <!--/.packages-->
+
+    <!--packages end-->
+    <%= will_paginate @booking_tours %>
+  </div>
+</section>

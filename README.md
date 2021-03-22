@@ -9,3 +9,4 @@
   `rails db:drop db:create db:migrate db:seed`
 + `yarn add jquery-ujs`
 + `yarn install --check-files`
++ `yarn add bootstrap-datepicker `

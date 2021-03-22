@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_141642) do
+ActiveRecord::Schema.define(version: 2021_03_23_063933) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,16 +35,19 @@ ActiveRecord::Schema.define(version: 2021_03_22_141642) do
 
   create_table "booking_tours", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status", default: 0
-    t.date "start_date"
+    t.string "start_date"
     t.string "customer_name"
     t.string "customer_email"
-    t.string "custromer_phone"
+    t.string "customer_phone"
     t.bigint "tour_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "duaration"
-    t.integer "quantity_persion"
+    t.integer "quantity_person"
+    t.text "note"
+    t.integer "price"
+    t.integer "total_price"
     t.index ["tour_id"], name: "index_booking_tours_on_tour_id"
     t.index ["user_id"], name: "index_booking_tours_on_user_id"
   end
@@ -87,22 +90,13 @@ ActiveRecord::Schema.define(version: 2021_03_22_141642) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
-  create_table "rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "point"
-    t.bigint "user_id"
-    t.bigint "tour_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tour_id"], name: "index_rates_on_tour_id"
-    t.index ["user_id"], name: "index_rates_on_user_id"
-  end
-
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.bigint "tour_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "point"
     t.index ["tour_id"], name: "index_reviews_on_tour_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

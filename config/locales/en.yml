@@ -20,7 +20,7 @@ en:
       significant: false
       strip_insignificant_zeros: false
       unit: "$"
-  count:
+  duaration:
     one: "%{count} day"
     other: "%{count} days"
   review:
