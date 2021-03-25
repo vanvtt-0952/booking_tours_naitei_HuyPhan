@@ -29,44 +29,33 @@
       </aside>
 
       <aside class="col-sm-5">
-        <article class="card-body m-0 pt-0 pl-5">
+        <article class="card-body m-0 pt-0 pl-5" id="tour-info">
           <h3 class="title text-uppercase"><%= @tour.name %></h3>
-          <div class="rating">
+          <div class="rating info">
             <div class="stars">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="review-no ml-2">(41 avis)</span>
+              <%= raw display_stars_layout @tour %>
             </div>
           </div>
-          <div class="mb-3 mt-3">
-              <span class="h7 text-success">En stock.</span>
+          <div class="mb-3 mt-3 info">
+            <span class="h7 text-success">
+              Duaration: <%= t "duaration", count: @tour.duaration %></span>
           </div>
-          <div class="mb-3 mt-3">
-            <span class="price-title">Prix :</span>
+          <div class="mb-3 mt-3 info">
+            <span class="price-title">Price/Person:</span>
             <span class="price color-price-waanbii"><%= number_to_currency @tour.price %></span>
           </div>
-        <dl class="item-property">
-          <dt>Description</dt>
-          <dd><p><%= @tour.description %></p></dd>
-        </dl>
+          <dl class="item-property info">
+            <dt>Description</dt>
+            <dd><p><%= @tour.description %></p></dd>
+          </dl>
         </article>
       </aside>
 
       <aside class="col-sm-4">
         <div class="row" id="form-booking-tour">
-          <%= render "form_booking_tour" %>
+          <%= render "/tours/form_booking_tour" %>
         </div>
       </aside>
-
-      <aside class="col-sm-8" id="comments">
-        <%= render "comments" %>
-
-      </aside>
-
     </div>
   </div>
 </div>
-<!--container

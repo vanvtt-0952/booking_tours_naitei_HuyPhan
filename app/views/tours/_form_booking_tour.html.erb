@@ -1,7 +1,9 @@
 <div class="col-12 col-md-12">
   <!--Form with header-->
-  <form>
+  <%= form_for @booking_tour, url: tour_booking_tours_path(@tour.id) do |f| %>
+    <%= f.hidden_field :price %>
     <div class="bg-info card border-primary rounded-0">
+      <%= render "/shares/error_messages", object: f.object %>
       <div class="card-header p-0" style="padding: 10px 0 10px 0;">
         <div class="text-white text-center py-2">
           <h3><i class="fa fa-info-circle"></i>Booking</h3>
@@ -12,29 +14,41 @@
         <!--Body-->
         <div class="form-group gap-auto">
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-            <input id="duaration" class="form-control" name="duaration" placeholder="duaration" style="z-index: inherit;">
+            <span class="input-group-addon"><i class="fa fa-clock-o text-info"></i></span>
+            <%= f.text_field :duaration, value: t("duaration", count: @tour.duaration),
+              class: "form-control underlined", required: true, disabled: true, style: "z-index: inherit;" %>
           </div>
         </div>
 
         <div class="form-group gap-auto">
           <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-calendar-check-o "></i></div>
-            <input class="form-control" name="start-date" placeholder="Start date" required style="z-index: inherit;">
+            <span class="input-group-addon"><i class="fa  fa-usd text-info"></i></span>
+            <%= f.text_field :total_price, value: number_to_currency(@tour.price),
+              class: "form-control underlined", required: true, disabled: true,
+              placeholder: "Total price" ,style: "z-index: inherit;" %>
+          </div>
+        </div>
+
+        <div class="form-group gap-auto">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar-check-o text-info"></i></div>
+            <%= f.text_field :start_date, class: "form-control",
+              "data-toggle" => "datepicker", required: true, autofocus: true, style: "z-index: inherit;" %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-users"></i></div>
-            <input class="form-control" name="quatity" required style="z-index: inherit;"></textarea>
+            <div class="input-group-addon"><i class="fa fa-users text-info"></i></div>
+            <%= f.number_field :quantity_person, value: 1, min: 1, class: "form-control",
+              required: true, style: "z-index: inherit;" %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-addon"><i class="fa fa-comment text-info"></i></div>
-            <textarea class="form-control" rows="4" name="note" placeholder="Notes" required style="z-index: inherit;"></textarea>
+            <%= f.text_area :note, class: "form-control", row: 4, style: "z-index: inherit;" %>
           </div>
         </div>
       </div>
@@ -51,29 +65,32 @@
         <div class="form-group gap-auto">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user text-info"></i></span>
-            <input id="user-name" class="form-control" name="user-name" placeholder="name" style="z-index: inherit;">
+            <%= f.text_field :customer_name, value: current_user.name,
+              class: "form-control underlined", required: true, style: "z-index: inherit;" %>
           </div>
         </div>
 
         <div class="form-group gap-auto">
           <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-            <input type="email" class="form-control" name="email" placeholder="ejemplo@gmail.com" required style="z-index: inherit;">
+            <div class="input-group-addon"><i class="fa fa-envelope text-info"></i></div>
+            <%= f.email_field :customer_email, value: current_user.email,
+              class: "form-control underlined", required: true, style: "z-index: inherit;" %>
           </div>
         </div>
 
         <div class="form-group gap-auto">
           <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-            <input type="email" class="form-control" name="phone" placeholder="Phone number" required style="z-index: inherit;">
+            <div class="input-group-addon"><i class="fa fa-phone text-info"></i></div>
+            <%= f.telephone_field :customer_phone, value: current_user.phone,
+              class: "form-control underlined", required: true, style: "z-index: inherit;" %>
           </div>
         </div>
 
-        <div class="text-center">
-          <input type="submit" value="Booking Now!" class="btn btn-info btn-block rounded-0 py-2">
+        <div class="text-center padding-botton-15">
+          <input type="submit" value="Booking Now!" class="btn btn-pr-cus ">
         </div>
       </div>
     </div>
-  </form>
+  <% end %>
   <!--Form with header-->
 </div>

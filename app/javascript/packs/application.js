@@ -1,11 +1,14 @@
+require("jquery")
+require("jquery-ui")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 
 require("channels")
-require("jquery")
 import toastr from 'toastr'
 import "bootstrap"
+import "bootstrap-datepicker"
+require("bootstrap-datepicker")
 
 toastr.options = {
   "closeButton": false,
@@ -29,3 +32,11 @@ window.jQuery = $;
 window.$ = $;
 global.toastr = toastr
 
+
+$(document).on('turbolinks:load ready', function() {
+  $('#booking_tour_start_date').datepicker({
+    minDate: +5
+  });
+
+  $('[data-toggle="datepicker"]').datepicker();
+});

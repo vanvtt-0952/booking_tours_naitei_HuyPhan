@@ -1,3 +1,55 @@
 .header-image {
   background-image: url(image_path("/images/bg_header.jpg");
 }
+.btn-pr-cus {
+    align-items: center;
+    background: #00d8ff;
+    border: 1px solid #00d8ff;
+    width: 150px;
+    height: 50px;
+    white-space: nowrap;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(14,15,18,.2);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+.padding-botton-15 {
+  padding-bottom: 15px;
+}
+
+.tours>ul.pagination {
+  padding-bottom: 15px;
+}
+
+#tour-info {
+  font-size: 18px !important;
+}
+
+#tour-info>div.info, #tour-info>dl.info {
+  padding-top: 10px;
+}
+.fa-star.checked {
+  color: orange;
+}
+
+.input-group-addon .text-info:after {
+  content:"*";
+  color:red;
+}
+
+
+.padding-left-revert {
+  padding-left: revert;
+}
+
+.list-style {
+  list-style: disc !important;
+}

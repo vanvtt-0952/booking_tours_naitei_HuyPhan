@@ -2,11 +2,12 @@
   <div id="error_explanation">
     <div class="alert alert-danger">
       <%= t "messages.count_message", count: object.errors.size %>.
-    </div>
-    <ul>
-      <% object.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+
+      <ul class="padding-left-revert list-style">
+        <% object.errors.full_messages.each do |msg| %>
+          <li class="list-style"><%= msg %></li>
         <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
 <% end %>

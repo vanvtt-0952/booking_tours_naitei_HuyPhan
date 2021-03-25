@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  before_action :load_tour, only: :show
+  before_action :load_tour, :build_booking_tour, only: :show
 
   def show; end
 
@@ -16,5 +16,9 @@ class ToursController < ApplicationController
 
     flash[:error] = "Da co loi xay ra, vui long load lai page"
     redirect_to tours_path
+  end
+
+  def build_booking_tour
+    @booking_tour = @tour.booking_tours.new
   end
 end
