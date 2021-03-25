@@ -35,8 +35,7 @@ global.toastr = toastr
 
 $(document).on('turbolinks:load ready', function() {
   $('#booking_tour_start_date').datepicker({
-    minDate: +5
+    dateFormat: 'dd/mm/yy',
+    minDate: +5,
   });
-
-  $('[data-toggle="datepicker"]').datepicker();
 });
