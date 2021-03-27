@@ -1,0 +1,95 @@
+<!--about-us start -->
+<section id="home" class="about-us">
+  <div class="container">
+    <div class="about-us-content">
+      <div class="row header-image">
+      </div><!--/.row-->
+    </div><!--/.about-us-content-->
+  </div><!--/.container-->
+
+</section><!--/.about-us-->
+
+<!--packages start-->
+<section id="tabs" class="project-tab">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Reivews</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">My Review</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active in" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <%= render "reviews" %>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Tour name</th>
+                  <th>Content</th>
+                  <th>Point</th>
+                  <th>Status</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @my_reviews.each_with_index do |review, index|%>
+                  <%= render partial: "my_review", locals: {review: review, index: index} %>
+                <% end %>
+                <% unless @my_reviews.any? %>
+                  Ban chua tao review
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style type="text/css">
+  .project-tab {
+    padding: 10%;
+    margin-top: -8%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+</style>

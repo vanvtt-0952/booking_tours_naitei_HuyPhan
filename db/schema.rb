@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_063933) do
+ActiveRecord::Schema.define(version: 2021_03_27_075413) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2021_03_23_063933) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "parent_id"
@@ -97,6 +108,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_063933) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "point"
+    t.integer "status", default: 0
+    t.boolean "is_active", default: false
     t.index ["tour_id"], name: "index_reviews_on_tour_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

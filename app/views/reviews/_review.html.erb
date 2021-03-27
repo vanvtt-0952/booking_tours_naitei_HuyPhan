@@ -1,0 +1,29 @@
+<aside class="col-sm-3">
+  <div id="testemonial-carousel">
+    <div class="home1-testm item">
+      <div class="home1-testm-single text-center">
+        <div class="home1-testm-img">
+          <%= check_image(review.tour.image) %>
+        </div><!--/.home1-testm-img-->
+        <div class="home1-testm-txt">
+          <span class="icon section-icon">
+            <i class="fa fa-quote-left" aria-hidden="true"></i>
+          </span>
+          <p>
+            <%= review.content[0..50] << (review.content.length > 50 ? " ..." : "") %>
+          </p>
+          <h3><div class="rating info">
+            <div class="stars">
+              <%= raw display_stars_review review.point %>
+            </div>
+          </div></h3>
+          <h4>
+            <a href="#">
+              <%= review.user.name %>
+            </a>
+          </h4>
+        </div><!--/.home1-testm-txt-->
+      </div><!--/.home1-testm-single-->
+    </div><!--/.item-->
+  </div>
+</aside>

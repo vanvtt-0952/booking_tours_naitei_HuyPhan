@@ -1,0 +1,12 @@
+<tr>
+  <td><%= index + 1 %></td>
+  <td><%= link_to review.tour.name, tour_path(id: review.tour.id) %></td>
+  <td><%= review.content[0..50] << (review.content.length > 50 ? " ..." : "") %></td>
+  <td><%= review.point %></td>
+  <td><%= review.status %></td>
+  <td><%= l review.created_at %></td>
+  <td>
+    <i class="text-primary fa fa-eye" aria-hidden="true"></i>
+    <i class="text-danger fa fa-times-circle-o"></i>
+  </td>
+</tr>

@@ -7,10 +7,11 @@ en:
     count_message: "Has %{count} errors!"
   time:
     formats:
-      own: "%H:%M:%S, %d %B"
       default: "%d-%m-%Y"
-      long: "%d %B, %Y"
+      long: "%d-%m-%Y %H:%M:%S %p"
       short: "%d %b"
+      time_spent: "%H:%M:%S"
+      date: "%Y-%m-%d"
   currency:
     format:
       delimiter: "."

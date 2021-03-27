@@ -13,4 +13,20 @@ module ToursHelper
 
     html_star_checked
   end
+
+  def is_review? tour_id
+    has_tours_booking = current_user.booking_tours.pluck :tour_id
+    has_tours_booking.include? tour_id
+  end
+
+    def display_stars_review point
+    html_star_checked = ''
+
+    (1..5).each do |index|
+      checked = point >= index ? "fa-star checked" : "fa-star-o"
+      html_star_checked << "<span class='fa #{checked}'></span>"
+    end
+
+    html_star_checked
+  end
 end
