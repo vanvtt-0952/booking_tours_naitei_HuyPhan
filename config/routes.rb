@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root "static_pages#home"
 
   get "static_pages/home"
@@ -12,10 +13,12 @@ Rails.application.routes.draw do
   resources :users
   resources :tours, only: %i(index show) do
     resources :booking_tours, only: :create
+    resources :reviews, only: %i(new create)
   end
 
+  resources :reviews, only: :index
   resources :booking_tours, only: %i(index show edit update destroy)
 
   namespace :admin do
-end
+  end
 end

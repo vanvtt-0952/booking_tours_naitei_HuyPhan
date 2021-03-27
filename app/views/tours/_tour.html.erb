@@ -32,6 +32,9 @@
       </div><!--/.packages-review-->
       <div class="about-btn">
         <%= link_to "Book now!", tour_path(tour), class: "about-view packages-btn" %>
+        <% if is_review? tour.id %>
+          <%= link_to "Review", new_tour_review_path(tour_id: tour), class: "about-view packages-btn" %>
+        <% end %>
       </div><!--/.about-btn-->
     </div><!--/.single-package-item-txt-->
   </div><!--/.single-package-item-->
