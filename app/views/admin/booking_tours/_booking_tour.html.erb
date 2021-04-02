@@ -1,0 +1,38 @@
+<tr>
+  <td scope="row">#</td>
+  <th scope="row">
+    <%= link_to tour_path(booking_tour.tour.id) do %>
+      <%= booking_tour.tour.name %>
+    <% end %>
+  </th>
+  <td scope="row"><%= number_to_currency booking_tour.price %></td>
+  <td scope="row"><%= t "duaration", count: booking_tour.duaration %></td>
+  <td scope="row"><%= number_to_currency booking_tour.total_price %></td>
+  <td scope="row"><%= booking_tour.start_date %></td>
+  <td scope="row"><%= booking_tour.quantity_person %></td>
+  <td scope="row"><%= booking_tour.customer_name %></td>
+  <td scope="row"><%= booking_tour.customer_email %></td>
+  <td scope="row"><%= booking_tour.customer_phone %></td>
+  <th scope="row"><%= booking_tour.status %></th>
+  <th scope="row">
+    <%= link_to admin_booking_tour_path(id: booking_tour.id) do %>
+      <%= image_tag "booking/see.png", class: "padding-3", size: "30x25", alt: "Show detail" %>
+    <% end %>
+
+    <% unless booking_tour.rejected? || booking_tour.approved? %>
+      <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:appoved]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn accept tour"}, remote: true do %>
+        <%= image_tag "booking/tick.png", class: "padding-3", size: "30x25", alt: "Approved" %>
+      <% end %>
+    <% end %>
+
+    <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:rejected]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn từ chối tour"}, remote: true do %>
+      <%= image_tag "booking/cross.png", class: "padding-3", size: "30x25", alt: "Rejected" %>
+    <% end %>
+
+    <% if booking_tour.waiting? %>
+      <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:pending]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn tạm hoãn tour"}, remote: true do %>
+        <%= image_tag "booking/folder.png", class: "padding-3", size: "30x25", alt: "Pending" %>
+      <% end %>
+    <% end %>
+  </th>
+</tr>

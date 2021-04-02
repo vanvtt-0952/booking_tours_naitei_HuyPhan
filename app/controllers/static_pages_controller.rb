@@ -1,9 +1,5 @@
 class StaticPagesController < ApplicationController
-  def home
-    @tours = Tour.sort_by_name.paginate(page: params[:page],
-      per_page: Settings.paginate.page_6)
-  end
+  before_action :load_tours, only: :home
 
-  def contact
-  end
+  def home; end
 end
