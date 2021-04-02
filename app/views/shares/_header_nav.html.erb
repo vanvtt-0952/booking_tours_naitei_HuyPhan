@@ -24,7 +24,7 @@
                 <li>
                   <%= link_to "Tours", tours_path %>
                 </li>
-                <li><%= link_to t("booking_tous"), booking_tours_path %></li>
+                <li><%= link_to t("booking_tous"), booking_tours_path if current_user %></li>
                 <li><%= link_to t("reviews"), reviews_path, class: "smooth-menu" %></li>
                 <% if logged_in? %>
                   <li>

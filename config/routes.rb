@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
   root "static_pages#home"
 
@@ -11,14 +12,15 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   resources :users
+  resources :reviews, only: :index
+  resources :booking_tours, only: %i(index show edit update destroy)
   resources :tours, only: %i(index show) do
     resources :booking_tours, only: :create
     resources :reviews, only: %i(new create)
   end
 
-  resources :reviews, only: :index
-  resources :booking_tours, only: %i(index show edit update destroy)
 
   namespace :admin do
+    resources :booking_tours
   end
 end

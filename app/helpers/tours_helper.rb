@@ -15,6 +15,7 @@ module ToursHelper
   end
 
   def is_review? tour_id
+    return if current_user.nil?
     has_tours_booking = current_user.booking_tours.pluck :tour_id
     has_tours_booking.include? tour_id
   end

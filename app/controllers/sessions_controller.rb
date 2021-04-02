@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
       log_in @user
       handler_remember @user
       flash[:success] = "Login thanh cong"
-      redirect_to root_path
+      redirect_to (@user.admin? ? admin_booking_tours_path : root_path )
     else
+      load_tours
       flash[:error] = "Email/Password khong hop le"
       render "static_pages/home"
     end

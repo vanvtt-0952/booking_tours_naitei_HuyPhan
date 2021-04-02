@@ -21,4 +21,9 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "message.alert_login"
     redirect_to login_url
   end
+
+  def load_tours
+    @tours = Tour.sort_by_name.paginate(page: params[:page],
+      per_page: Settings.paginate.page_6)
+  end
 end
