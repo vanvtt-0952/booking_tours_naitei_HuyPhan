@@ -15,8 +15,8 @@ module ToursHelper
   end
 
   def is_review? tour_id
-    has_tours_booking = current_user.booking_tours.pluck :tour_id
-    has_tours_booking.include? tour_id
+    has_tours_booking = current_user&.booking_tours&.pluck :tour_id
+    has_tours_booking.include? tour_id  if has_tours_booking.present?
   end
 
     def display_stars_review point

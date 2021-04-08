@@ -60,7 +60,7 @@ class BookingToursController < ApplicationController
   end
 
   def load_booking_tours
-    @booking_tours = @current_user.booking_tours
+    @booking_tours = @current_user.booking_tours 
       .sort_by_update_at
       .paginate(page: params[:page], per_page: Settings.paginate.page_6)
   end
