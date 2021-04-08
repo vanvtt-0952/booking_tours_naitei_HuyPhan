@@ -8,7 +8,7 @@ class BookingTour < ApplicationRecord
   belongs_to :user
   belongs_to :tour
 
-  enum status: {waiting: 0, cancel: 1, appoved: 2, rejected: 3, pending: 4}
+  enum status: {waiting: 0, cancel: 1, approved: 2, rejected: 3, pending: 4}
 
   validates :start_date, presence: true
   validates :customer_name, presence: true
@@ -22,7 +22,7 @@ class BookingTour < ApplicationRecord
   validate :valid_start_date, on: :create
 
   scope :sort_by_update_at, -> {order updated_at: :desc}
-
+  scope :sort_by_start_date, -> {order start_date: :desc}
   private
 
   def valid_start_date
