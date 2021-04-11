@@ -191,6 +191,50 @@ $(document).ready(function(){
 
         });
 
+    let getUrlParameter = function getUrlParameter(sParam) {
+        let sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
-});
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
+    }
+    // Set active tab
+    let currentUrl = new URL(window.location.href);
+    $('.my-nav-item').each(function(index, item) {
+        let tabPath = $(item).find('a').attr('href');
+        if (tabPath == currentUrl.pathname + currentUrl.search) {
+            $(item).addClass('active');
+        }
+    })
+
+    //Set reviews active tab
+    if (currentUrl.pathname == '/reviews') {
+        $('.tab-pane').removeClass('active show in');
+        $('.nav-link').removeClass('active show in');
+        $('#' + getUrlParameter('tab') + '_tab').addClass('active show in');
+        $('a[href="#'+ getUrlParameter('tab') + '_tab' +'"]').addClass('active');
+        $('.nav-link').on('click', function() {
+            location.replace(updateQueryStringParameter(window.location.href, 'tab', $(this).attr('href').slice(1, -4)));
+        })
+    }
+})
 

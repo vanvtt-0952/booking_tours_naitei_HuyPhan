@@ -23,7 +23,7 @@ admin.save
     password_confirmation: "123456",
     role: User.roles[:customer],
     address: Faker::Address.full_address,
-    phone: Faker::PhoneNumber.cell_phone
+    phone: Faker::Base.numerify('###-###-####')
   )
   u.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'home', 'user.jpeg')),
       filename: 'user.jpeg',
