@@ -15,22 +15,26 @@
   <td scope="row"><%= booking_tour.customer_phone %></td>
   <th scope="row"><%= booking_tour.status %></th>
   <th scope="row">
-    <%= link_to admin_booking_tour_path(id: booking_tour.id) do %>
+    <%= link_to admin_booking_tour_path(id: booking_tour.id),
+      'data-toggle' => "tooltip", "data-placement" => "top", "title" => "View Detail" do %>
       <%= image_tag "booking/see.png", class: "padding-3", size: "30x25", alt: "Show detail" %>
     <% end %>
 
     <% unless booking_tour.rejected? || booking_tour.approved? %>
-      <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:appoved]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn accept tour"}, remote: true do %>
+      <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:appoved]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn accept tour"}, remote: true,
+      'data-toggle' => "tooltip", "data-placement" => "top", "title" => "Approved" do %>
         <%= image_tag "booking/tick.png", class: "padding-3", size: "30x25", alt: "Approved" %>
       <% end %>
     <% end %>
 
-    <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:rejected]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn từ chối tour"}, remote: true do %>
+    <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:rejected]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn từ chối tour"}, remote: true,
+      'data-toggle' => "tooltip", "data-placement" => "top", "title" => "Rejected" do %>
       <%= image_tag "booking/cross.png", class: "padding-3", size: "30x25", alt: "Rejected" %>
     <% end %>
 
     <% if booking_tour.waiting? %>
-      <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:pending]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn tạm hoãn tour"}, remote: true do %>
+      <%= link_to admin_booking_tour_path(id: booking_tour.id, status: BookingTour.statuses[:pending]), method: :patch, data: {confirm: "Bạn có chắc chắn muốn tạm hoãn tour"}, remote: true,
+      'data-toggle' => "tooltip", "data-placement" => "top", "title" => "Pending" do %>
         <%= image_tag "booking/folder.png", class: "padding-3", size: "30x25", alt: "Pending" %>
       <% end %>
     <% end %>
