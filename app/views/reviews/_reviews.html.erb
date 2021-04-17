@@ -2,20 +2,18 @@
    <%= render "search" %>
 </section>
 <section>
-  <div class="container">
-    <div class="card border-0">
-      <div class="row">
-        <div class="gallary-header text-center">
-          <h2>
-            clients reviews
-          </h2>
-        </div>
-        <% @reviews.each do |review|%>
-          <%= render partial: "reviews/review", locals: {review: review} %>
-        <% end %>
-
+  <div class="card border-0">
+    <div class="row">
+      <div class="gallary-header text-center">
+        <h2>
+          Clients reviews
+        </h2>
       </div>
-        <%= will_paginate @reviews, class: "reviews" %>
+      <% @reviews.each do |review|%>
+        <%= render partial: "reviews/review", locals: {review: review} %>
+      <% end %>
+
     </div>
+      <%= will_paginate @reviews, class: "reviews", :param_name => 'reviews' %>
   </div>
 </section>

@@ -18,9 +18,9 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.view.sort_by_created_at.paginate(page: params[:page], per_page: Settings.paginate.page_8)
+    @reviews = Review.view.sort_by_created_at.paginate(page: params[:reviews], per_page: Settings.paginate.page_8)
 
-    @my_reviews = current_user.reviews.sort_by_created_at.paginate(page: params[:page], per_page: Settings.paginate.page_6)
+    @my_reviews = current_user.reviews.sort_by_created_at.paginate(page: params[:my_reviews], per_page: Settings.paginate.page_6)
   end
 
   private
