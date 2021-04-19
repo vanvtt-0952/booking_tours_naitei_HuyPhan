@@ -4,7 +4,9 @@ class ToursController < ApplicationController
   def show; end
 
   def index
-    @tours = Tour.sort_by_name
+    @tours = Tour.search_by_duaration(params[:duaration])
+      .search_by_name(params[:name])
+      .sort_by_name
       .paginate(page: params[:page], per_page: Settings.paginate.page_6)
   end
 

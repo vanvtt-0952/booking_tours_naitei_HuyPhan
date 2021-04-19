@@ -33,106 +33,43 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-
           <div role="tabpanel" class="tab-pane active fade in" id="tours">
+            <%= form_with url: tours_path, method: :get, local: true do |f| %>
             <div class="tab-para">
-
               <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="col-lg-6 col-md-4 col-sm-4">
                   <div class="single-tab-select-box">
-
-                    <h2>Budget</h2>
-
-                    <div class="">
-                      <div class="travel-filter">
-                          <div class="info_widget">
-                            <div class="price_filter">
-
-                              <div id="slider-range"></div><!--/.slider-range-->
-
-                              <div class="price_slider_amount">
-                                <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
-                              </div><!--/.price_slider_amount-->
-                            </div><!--/.price-filter-->
-                          </div><!--/.info_widget-->
-                        </div><!-- /.select-->
+                    <h2>Name</h2>
+                    <div class="travel-icon">
+                      <%= f.text_field :name, value:(params[:name] || ""), autofocus: true, class: "form-control", style: "height: 50px;" %>
                     </div><!-- /.travel-select-icon -->
                   </div><!--/.single-tab-select-box-->
-                </div><!--/.col-->
-
-                <div class="col-lg-2 col-md-3 col-sm-4">
-                  <div class="single-tab-select-box">
-                    <h2>check in</h2>
-                    <div class="travel-check-icon">
-                      <form action="#">
-                        <input type="text" name="check_in" class="form-control" data-toggle="datepicker" placeholder="12 -01 - 2017 ">
-                      </form>
-                    </div><!-- /.travel-check-icon -->
-                  </div><!--/.single-tab-select-box-->
-                </div><!--/.col-->
-
-                <div class="col-lg-2 col-md-3 col-sm-4">
-                  <div class="single-tab-select-box">
-                    <h2>check out</h2>
-                    <div class="travel-check-icon">
-                      <form action="#">
-                        <input type="text" name="check_out" class="form-control"  data-toggle="datepicker" placeholder="22 -01 - 2017 ">
-                      </form>
-                    </div><!-- /.travel-check-icon -->
-                  </div><!--/.single-tab-select-box-->
-                </div><!--/.col-->
+                </div>
 
                 <div class="col-lg-2 col-md-1 col-sm-4">
                   <div class="single-tab-select-box">
                     <h2>duration</h2>
-                    <div class="travel-select-icon">
-                      <select class="form-control ">
-
-                          <option value="default">5</option><!-- /.option-->
-
-                          <option value="10">10</option><!-- /.option-->
-
-                          <option value="15">15</option><!-- /.option-->
-                          <option value="20">20</option><!-- /.option-->
-
-                      </select><!-- /.select-->
+                    <div class="travel-icon">
+                      <%= f.number_field :duaration, class: "form-control", step: 1,
+                      min: 1, value: params[:duaration] || "", style: "height: 50px;" %>
                     </div><!-- /.travel-select-icon -->
                   </div><!--/.single-tab-select-box-->
                 </div><!--/.col-->
 
-                <div class="col-lg-2 col-md-1 col-sm-4">
+                <div class="col-lg-4 col-md-1 col-sm-4">
                   <div class="single-tab-select-box">
-                    <h2>members</h2>
-                    <div class="travel-select-icon">
-                      <select class="form-control ">
-
-                          <option value="default">1</option><!-- /.option-->
-
-                          <option value="2">2</option><!-- /.option-->
-
-                          <option value="4">4</option><!-- /.option-->
-                          <option value="8">8</option><!-- /.option-->
-
-                      </select><!-- /.select-->
+                    <h2></h2>
+                    <div class="about-btn">
+                      <%= f.button class: "about-view travel-btn", style: "height: 50px !important;" do %>
+                        <i class="fa fa-search" aria-hidden="true"  style="padding-right: 11px; font-size: 27px;"></i>
+                        search
+                      <% end %><!-- /.select-->
                     </div><!-- /.travel-select-icon -->
                   </div><!--/.single-tab-select-box-->
                 </div><!--/.col-->
-
               </div><!--/.row-->
-
-              <div class="row">
-                <div class="clo-sm-7">
-                  <div class="about-btn travel-mrt-0 pull-right">
-                    <button  class="about-view travel-btn">
-                      search
-                    </button><!--/.travel-btn-->
-                  </div><!--/.about-btn-->
-                </div><!--/.col-->
-
-              </div><!--/.row-->
-
             </div><!--/.tab-para-->
-
+            <% end %>
           </div><!--/.tabpannel-->
 
           <div role="tabpanel" class="tab-pane fade in" id="hotels">
