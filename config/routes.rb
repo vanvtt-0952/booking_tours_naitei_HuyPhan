@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :tours, only: %i(index show) do
     resources :booking_tours, only: :create
     resources :reviews, only: %i(new create)
+    collection do
+      get "search"
+    end
   end
 
 

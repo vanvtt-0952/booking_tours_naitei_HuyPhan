@@ -10,4 +10,8 @@ class Tour < ApplicationRecord
 
   scope :sort_by_name, -> {order name: :desc}
   scope :hot_tour, -> {join(:book_tours ).group(tour_id).last(6)}
+
+  scope :search_by_duaration, ->duaration{where duaration: duaration if duaration.present?}
+
+  scope :search_by_name, ->name{where("name like ?",  "%#{name}%") if name.present? }
 end

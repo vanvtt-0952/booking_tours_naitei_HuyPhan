@@ -3,11 +3,11 @@
   <h2>
     special packages
   </h2>
-
+  
 </div><!--/.gallery-header-->
 <div class="packages-content">
-  <div class="row">
-    <%= render @tours %>
+  <div class="row"><% byebug %>
+    <%= render(@tours) || "Khong co tour" %>
   </div><!--/.row-->
 </div><!--/.packages-content-->
 <!--/.packages-->
