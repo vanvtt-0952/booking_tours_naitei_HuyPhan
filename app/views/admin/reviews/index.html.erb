@@ -1,0 +1,45 @@
+<!--about-us start -->
+<section id="home" class="about-us">
+  <div class="container">
+    <div class="about-us-content">
+      <div class="row header-image">
+      </div><!--/.row-->
+    </div><!--/.about-us-content-->
+  </div><!--/.container-->
+
+</section><!--/.about-us-->
+
+<!--packages start-->
+<section id="tabs" class="project-tab">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tab-content mt-3" id="nav-tabContent">
+
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Author</th>
+                  <th>Tour name</th>
+                  <th>Content</th>
+                  <th>Point</th>
+                  <th>Status</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @reviews.each_with_index do |review, index|%>
+                  <%= render partial: "review", locals: {review: review, index: index} %>
+                <% end %>
+                <% unless @reviews.any? %>
+                  Chua co bat cu review nao
+                <% end %>
+              </tbody>
+            </table>
+            <%= will_paginate @reviews, class: "my_reviews" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

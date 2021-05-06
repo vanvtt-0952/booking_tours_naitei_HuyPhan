@@ -1,0 +1,23 @@
+<tr>
+  <td><%= index + 1 %></td>
+  <td><%= review.user.name %></td>
+  <td><%= link_to review.tour.name, tour_path(id: review.tour.id) %></td>
+  <td><%= review.content[0..50] << (review.content.length > 50 ? " ..." : "") %></td>
+  <td><%= review.point %></td>
+  <td><%= review.status %></td>
+  <td><%= l review.created_at %></td>
+  <td>
+    <%= link_to "#", title: "Show this review" do %>
+      <i class="text-primary fa fa-eye" aria-hidden="true"></i>
+    <% end %>
+
+    <%= link_to rejected_admin_review_path(id: review.id), method: :patch, title: "Reject this review" do %>
+      <i class="text-danger fa fa-times-circle-o"></i>
+    <% end %>
+
+    <%= link_to public_view_admin_review_path(id: review.id), title: "Public this review", method: :patch do %>
+      <i class="fa fa-globe" aria-hidden="true"></i>
+    <% end %>
+
+  </td>
+</tr>

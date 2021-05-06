@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
   root "static_pages#home"
 
@@ -31,6 +30,12 @@ Rails.application.routes.draw do
         patch "approved", to: "booking_tours#approved_booking"
         patch "rejected", to: "booking_tours#rejected_booking"
         patch "pending", to: "booking_tours#pending_booking"
+      end
+    end
+    resources :reviews, only: %i(index show) do
+      member do
+        patch "rejected", to: "reviews#rejected"
+        patch "public_view", to: "reviews#public_view"
       end
     end
   end
