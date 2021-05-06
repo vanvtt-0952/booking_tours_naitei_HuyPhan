@@ -1,7 +1,7 @@
 module ToursHelper
   def display_stars_layout tour
     points = tour.reviews.pluck :point
-    average_point = points.sum(0)/points.size 
+    average_point = points.sum(0)/points.size
     html_star_checked = ''
 
     (1..5).each do |index|
@@ -16,7 +16,7 @@ module ToursHelper
 
   def is_review? tour_id
     return if current_user.nil?
-    has_tours_booking = current_user.booking_tours.pluck :tour_id
+    has_tours_booking = current_user.booking_tours.approved.pluck :tour_id
     has_tours_booking.include? tour_id
   end
 
