@@ -1,0 +1,6 @@
+<%= sanitize custom_bootstrap_flash %>
+
+<% if flash[:success].present? %>
+  $("#booking_tours_admin")
+    .html("<%= j render partial: 'admin/booking_tours/booking_tour', collection: @booking_tours %>")
+<% end %>

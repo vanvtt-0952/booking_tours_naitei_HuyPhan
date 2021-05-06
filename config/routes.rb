@@ -26,6 +26,12 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :booking_tours
+    resources :booking_tours do
+      member do
+        patch "approved", to: "booking_tours#approved_booking"
+        patch "rejected", to: "booking_tours#rejected_booking"
+        patch "pending", to: "booking_tours#pending_booking"
+      end
+    end
   end
 end
