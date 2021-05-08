@@ -51,6 +51,25 @@ class ReviewsController < ApplicationController
   
   end
 
+  def edit
+    @review = Review.find_by id: params[:id]
+  end
+
+  def update    
+    @review = Review.find_by id: params[:id]
+    if @review.update(review_params)   
+          redirect_to reviews_path(tab: 'my_reviews')
+          flash[:success] = "Review Updated!"   
+    else  
+          render action: :edit   
+    end   
+  end 
+
+
+  def review_params
+    params.require(:review).permit(:content)
+  end  
+
   def destroy
     @review =  Review.find_by id: params[:id]
     @review.destroy
@@ -61,7 +80,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review)
+      params.require(:review)
       .permit(:content, :point)
       .merge(user_id: current_user.id)
   end
