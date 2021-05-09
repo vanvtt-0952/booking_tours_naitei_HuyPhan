@@ -99,12 +99,11 @@ class ReviewsController < ApplicationController
   end
 
   def load_review
-    @review = current_user.reviews.find_by id: params[:id]
-    return if @reivew
+    @review = @current_user.reviews.find_by id: params[:id]
+    return if @review
 
     flash[:error] = "Da co loi xay ra, vui long load lai trang"
-    redirect_to reviews_path
-
+    redirect_to reviews_path(reviews: 1)
   end
 end
 

@@ -10,7 +10,7 @@
             <i class="fa fa-quote-left" aria-hidden="true"></i>
           </span>
           <p>
-            <%= review.content[0..50] << (review.content.length > 50 ? " ..." : "") %>
+            <%= raw(review.content[0..50] << (review.content.length > 50 ? " ..." : "")) %>
           </p>
           <h3><div class="rating info">
             <div class="stars">
