@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user
   before_action :load_tour, only: %i(new create)
+  before_action :load_review, only: %i(edit update destroy)
 
   def new
     @review = @tour.reviews.new
@@ -53,17 +54,14 @@ class ReviewsController < ApplicationController
   
   end
 
-  def edit
-    @review = Review.find_by id: params[:id]
-  end
+  def edit; end
 
-  def update    
-    @review = Review.find_by id: params[:id]
+  def update
     if @review.update(review_params)   
-          redirect_to reviews_path(tab: 'my_reviews')
-          flash[:success] = "Review Updated!"   
+      redirect_to reviews_path(tab: 'my_reviews')
+      flash[:success] = "Review Updated!"   
     else  
-          render action: :edit   
+      render action: :edit   
     end   
   end 
 
@@ -73,7 +71,6 @@ class ReviewsController < ApplicationController
   end  
 
   def destroy
-    @review =  Review.find_by id: params[:id]
     @review.destroy
     flash[:success] = "Bạn đã xóa thành công!"
     redirect_to reviews_path(:tab => 'my_reviews')
@@ -95,21 +92,20 @@ class ReviewsController < ApplicationController
     redirect_to tours_path
   end
 
-  def load_review
-    @review = Review.find_by id: params[:id]
-    return if @review
-
-    flash[:error] = "Da co loi xay ra, vui long load lai trang"
-    redirect_to booking_tours_path
-  end
-
   def load_reviews
     @reviews = @current_user.reviews
       .sort_by_update_at
       .paginate(page: params[:page], per_page: Settings.paginate.page_6)
   end
 
+  def load_review
+    @review = current_user.reviews.find_by id: params[:id]
+    return if @reivew
 
+    flash[:error] = "Da co loi xay ra, vui long load lai trang"
+    redirect_to reviews_path
+
+  end
 end
 
 
