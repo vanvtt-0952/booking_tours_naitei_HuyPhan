@@ -7,4 +7,6 @@ class Review < ApplicationRecord
 
   scope :sort_by_created_at, -> {order created_at: :desc}
   scope :sort_by_status, -> {order :status}
+
+
 end

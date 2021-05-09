@@ -29,6 +29,9 @@ gem "bcrypt", "3.1.15"
 gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
 gem "mechanize"
+gem 'pg_search'
+gem 'select2-rails'
+gem 'underscore-rails'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
