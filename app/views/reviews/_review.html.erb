@@ -18,12 +18,13 @@
             </div>
           </div></h3>
           <h4>
-            <a href="#">
+          <%= link_to review_path(id: review.id) do %>
               <%= review.user.name %>
-            </a>
+          <% end %>
           </h4>
         </div><!--/.home1-testm-txt-->
       </div><!--/.home1-testm-single-->
     </div><!--/.item-->
   </div>
 </aside>
+
